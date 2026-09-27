@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAuth } from "../_lib/auth";
-import { supabaseAdmin } from "../_lib/supabaseAdmin";
+import { requireAuth } from "../_lib/auth.js";
+import { supabaseAdmin } from "../_lib/supabaseAdmin.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!requireAuth(req, res)) return;

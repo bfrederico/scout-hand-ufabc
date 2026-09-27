@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAuth } from "../_lib/auth";
+import { requireAuth } from "../_lib/auth.js";
 
 // TODO (próxima etapa, seções 39-41 do spec): buscar eventos + estatísticas
 // agregadas do jogo e montar o PDF (ex: com pdf-lib ou @react-pdf/renderer),
