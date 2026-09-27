@@ -20,15 +20,8 @@ import {
   saveEventLocally,
 } from "@/database/db";
 import { syncPendingEvents } from "@/sync/syncEngine";
-
-const ZONES: { value: OriginZone; label: string }[] = [
-  { value: "6m", label: "6m" },
-  { value: "9m", label: "9m" },
-  { value: "7m", label: "7m" },
-  { value: "ponta_esquerda", label: "Ponta E" },
-  { value: "ponta_direita", label: "Ponta D" },
-  { value: "contra_ataque", label: "Contra-ataque" },
-];
+import CourtZoneSelector from "@/components/CourtZoneSelector";
+import GoalDirectionSelector from "@/components/GoalDirectionSelector";
 
 const SHOT_TYPES: { value: ShotType; label: string }[] = [
   { value: "direto", label: "Direto" },
@@ -42,12 +35,6 @@ const RESULTS: { value: ShotResult; label: string }[] = [
   { value: "fora", label: "Fora" },
   { value: "trave", label: "Trave" },
   { value: "bloqueio", label: "Bloqueio" },
-];
-
-const DIRECTIONS: Direction[] = [
-  "cima_esquerda", "cima_centro", "cima_direita",
-  "meio_esquerda", "meio_centro", "meio_direita",
-  "baixo_esquerda", "baixo_centro", "baixo_direita",
 ];
 
 const TURNOVER_TYPES: { value: TurnoverType; label: string }[] = [
@@ -262,11 +249,9 @@ export default function Scout() {
 
         {step === "shot_zone" && (
           <>
-            <h3>Origem</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
-              {ZONES.map((z) => (
-                <button key={z.value} className="btn" onClick={() => chooseZone(z.value)}>{z.label}</button>
-              ))}
+            <h3>Origem — toque na quadra</h3>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <CourtZoneSelector onSelect={chooseZone} />
             </div>
           </>
         )}
@@ -284,11 +269,9 @@ export default function Scout() {
 
         {step === "shot_direction" && (
           <>
-            <h3>Direção no gol</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, maxWidth: 240 }}>
-              {DIRECTIONS.map((d) => (
-                <button key={d} className="btn" onClick={() => chooseDirection(d)}>●</button>
-              ))}
+            <h3>Direção — toque no gol</h3>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <GoalDirectionSelector onSelect={chooseDirection} />
             </div>
           </>
         )}
