@@ -1,0 +1,118 @@
+:root {
+  /* Identidade principal: verde (seção 4) */
+  --color-primary: #0f8a3c;
+  --color-primary-dark: #0b3d20;
+  --color-primary-light: #4fc97a;
+
+  /* Significado semântico das cores (seção 5, tabela) */
+  --color-positive: #0f8a3c; /* gol / confirmação */
+  --color-negative: #d1352b; /* erro / gol sofrido */
+  --color-pass: #1f6fd6; /* passe / assistência */
+  --color-defense: #7a3fc9; /* defesa */
+  --color-penalty: #e0a800; /* falta / punição */
+  --color-neutral: #6b7280; /* informação neutra */
+
+  --color-bg: #0b0f0d;
+  --color-surface: #151b18;
+  --color-surface-alt: #1f2622;
+  --color-text: #f5f7f6;
+  --color-text-muted: #a3aca7;
+  --color-border: #2a332e;
+
+  --radius: 12px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Botões de ação grandes e com alto contraste (seção 5) */
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-danger {
+  background: var(--color-negative);
+  color: #fff;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Barra de navegação inferior (seção 12) */
+.bottom-nav {
+  display: flex;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding-bottom: var(--safe-bottom);
+}
+
+.bottom-nav a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.bottom-nav a.active {
+  color: var(--color-primary-light);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
